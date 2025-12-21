@@ -253,7 +253,6 @@ with PdfPages(OUTPUT_PDF) as pdf:
         plt.close(fig)
     except Exception:
         pass
-1122
     # Добавляем все PNG-графики в PDF
     for p in product_cols:
         fig_path = os.path.join(FIGURES_DIR, f"{p}_forecast.png")
