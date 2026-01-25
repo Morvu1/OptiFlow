@@ -1,0 +1,40 @@
+<!-- templates/results.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Результаты прогноза</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <div class="container">
+    <h3>Результаты</h3>
+    <div class="mb-3">
+      <a class="btn btn-primary" href="/">Сделать новый прогноз</a>
+    </div>
+
+    <h5>Сводка (помесячно)</h5>
+    <div>
+      {{ pivot | safe }}
+    </div>
+
+    <h5 class="mt-4">Графики</h5>
+    <div class="row">
+      {% for fp in figures %}
+      <div class="col-md-6 mb-3">
+        <div class="card p-2">
+          <img src="/{{ fp }}" class="img-fluid" alt="chart">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h5 class="mt-4">Скачать</h5>
+    <div class="mb-4">
+      <a class="btn btn-outline-success" href="/download/{{ excel_path.split('/')[-1] }}">Скачать Excel</a>
+      <a class="btn btn-outline-secondary" href="/download/{{ pdf_path.split('/')[-1] }}">Скачать PDF</a>
+    </div>
+
+  </div>
+</body>
+</html>
